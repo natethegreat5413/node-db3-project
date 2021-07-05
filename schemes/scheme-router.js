@@ -2,6 +2,8 @@ const express = require('express');
 
 const Schemes = require('./scheme-model.js');
 
+const db = require('../data/db-config')
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -85,7 +87,7 @@ router.put('/:id', (req, res) => {
   Schemes.findById(id)
   .then(scheme => {
     if (scheme) {
-      Schemes.update(changes, id)
+      Schemes.updateSchemes(changes, id)
       .then(updatedScheme => {
         res.json(updatedScheme);
       });
